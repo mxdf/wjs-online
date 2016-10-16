@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 1000px;
+            width: 1170px;
+            background: red;
+            margin: 0 auto;
+        }
+        /*1.当屏幕宽度超过1200px的时候 版心宽度限制为1170px 背景颜色是红色*/
+        /*@media( min-width: 1200px){*/
+            /*.container{*/
+                /*width: 1170px;*/
+                /*background-color: red;*/
+            /*}*/
+        /*}*/
+        /*2.当屏幕宽度超过992px不超过1200px的时候 版心宽度限制为970px 背景颜色是蓝色*/
+        @media (max-width: 1200px){
+            .container{
+                width: 970px;
+                background-color: blue;
+            }
+        }
+        /*3.当屏幕宽度超过768px不超过992px的时候 版心宽度限制为750px 背景颜色是绿色*/
+        @media (max-width: 992px){
+            .container{
+                width: 750px;
+                background-color: green;
+            }
+        }
+        /*4.不超过768px的时候 版心宽度限制为100% 背景颜色是粉色*/
+        @media ( max-width: 768px){
+            .container{
+                width: 100%;
+                background-color: deepskyblue;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+<!--
+  1.当屏幕宽度超过1200px的时候 版心宽度限制为1170px 背景颜色是红色
+  2.当屏幕宽度超过992px不超过1200px的时候 版心宽度限制为970px 背景颜色是蓝色
+  3.当屏幕宽度超过768px不超过992px的时候 版心宽度限制为750px 背景颜色是绿色
+  4.不超过768px的时候 版心宽度限制为100% 背景颜色是粉色
+-->
+<div class="container"></div>
+
+
+</body>
+</html>

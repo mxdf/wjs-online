@@ -1,0 +1,134 @@
+<!DOCTYPE html><!--html5文档格式-->
+<html lang="zh-CN"><!--申明语言是中文简体-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content='width=device-width,initial-scale=1.0,uesr-scalable=no'>
+    <title>template</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <!--[if lt IE 9]>
+    <script src = "../lib/html5shiv/html5shiv.min.js"></script>
+    <script src = "../lib/respond/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .bg_img{
+            height: 410px;
+            width: 100%;
+            background-size:cover;
+            background-position: center center;
+            display: block;
+        }
+        .m_img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!--点模版-->
+<script type = "text/template" id="point_template">
+    <% $.each(key, function (index,obj) {  %>
+    <li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=index==0?'active':''%>"></li>
+    <% }); %>
+</script>
+<!--轮播图模板-->
+<script type = "text/template" id="img_template">
+    <%$.each(key.list, function (index,obj) {%>
+        <div class="item <%=index==0?'active':''%>">
+            <%if(key.isM){%>
+                <img class="m_img " src="<%-obj.smimg%>" alt="">
+            <%}else{%>
+                <a href="#" class="bg_img " style="background-image: url(<%-obj.bgimg%>)"></a>
+            <%}%>
+        </div>
+    <%});%>
+
+</script>
+
+
+<script src = "../js/jquery-1.12.4.js"></script>
+<script src = "../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src = "../lib/underscore/underscore.js"></script>
+<script>
+    $(function () {
+        banner();
+    });
+
+//    动态响应轮播图
+    function banner(){
+        /*分析
+         * 1.准备数据    json格式的数组
+         * 2.解析数据转化成html结构  之前的做法：拼接字符串  （现在：模版引擎  underscore template方法）
+         *   判断当前是移动端还是非移动端  决定你要渲染的html结构
+         * 3.渲染到页面当中
+         * 4.监听到屏幕的宽度  html结构的切换  渲染
+         * */
+        var imgList=[
+            {
+                bgimg:"../images/slide_01_2000x410.jpg",
+                smimg:"../images/slide_01_640x340.jpg"
+            },
+            {
+                bgimg:"../images/slide_02_2000x410.jpg",
+                smimg:"../images/slide_02_640x340.jpg"
+            },
+            {
+                bgimg:"../images/slide_03_2000x410.jpg",
+                smimg:"../images/slide_03_640x340.jpg"
+            },
+            {
+                bgimg:"../images/slide_04_2000x410.jpg",
+                smimg:"../images/slide_04_640x340.jpg"
+            }
+        ]
+        function  renderHtml(){
+            var width = $(window).width();
+            var isMobile = width < 768 ? true : false;
+
+            var pointTemplateStr = document.querySelector("#point_template").innerHTML;
+            var imgTemplateStr = document.querySelector("#img_template").innerHTML;
+
+            var pointFuc = _.template(pointTemplateStr);
+            var imgFuc = _.template(imgTemplateStr);
+
+            var pointHtml = pointFuc({key:imgList});
+            var imgHtml = imgFuc({
+                key:{
+                    list:imgList,
+                    isM:isMobile
+                }
+            });
+
+            $(".carousel-indicators").html(pointHtml);
+            $(".carousel-inner").html(imgHtml);
+        }
+
+        $(window).on("resize", function () {
+            renderHtml();
+        }).trigger('resize');
+
+    }
+</script>
+</body>
+</html>

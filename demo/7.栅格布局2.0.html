@@ -1,0 +1,53 @@
+<!DOCTYPE html><!--html5文档格式-->
+<html lang="zh-CN"><!--申明语言是中文简体-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content='width=device-width,initial-scale=1.0,uesr-scalable=no'>
+    <title>template</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <!--[if lt IE 9]>
+    <script src = "../lib/html5shiv/html5shiv.min.js"></script>
+    <script src = "../lib/respond/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .container{
+            height: 150px;
+            background: skyblue;
+            margin-bottom: 30px;
+        }
+        .container .row{
+            /*height: 50px;*/
+            background: salmon;
+        }
+        .container .row  div, .row  span
+        {
+            height: 50px;
+            border: 1px solid saddlebrown;
+            background-color: yellowgreen;
+        }
+
+    </style>
+</head>
+<body>
+<!--offset可以设置表格位移，后续的表格列元素会随之一起位移-->
+<!--表格列可以用行内元素标签，但是表格行用span标签会出现bug-->
+<div class="container">
+    <div class="row">
+        <span class="col-xs-4 col-xs-offset-1">1</span>
+        <span class="col-xs-4">2</span>
+        <span class="col-xs-4">3</span>
+        <span class="col-xs-4">4</span>
+        <span class="col-xs-4">5</span>
+        <span class="col-xs-4">6</span>
+    </div>
+</div>
+
+
+
+
+<script src = "../js/jquery-1.12.4.js"></script>
+<script src = "../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src = "../js/index.js"></script>
+</body>
+</html>

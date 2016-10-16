@@ -1,0 +1,82 @@
+<!DOCTYPE html><!--html5文档格式-->
+<html lang="zh-CN"><!--申明语言是中文简体-->
+<head>
+    <meta charset="utf-8">
+    <!--当是IE的是试用最新的渲染引擎来渲染页面-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <!--让页面适配移动端  需要加上 user-scalable=0 让用户不予许缩放-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">-->
+    <meta name="viewport" content='width=device-width,initial-scale=1.0,uesr-scalable=no'>
+    <!--页面的加载顺序和解析顺序 -->
+
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>template</title>
+
+
+    <!-- 引入Bootstrap 核心css文件-->
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+
+    <!--IE8一下就不支持html5标签和媒体查询-->
+    <!--
+        html5标签要支持的话？  引入 html5shiv
+        media query 要支持的话？  引入 respond
+    -->
+    <!--注意：要已http形式打开你的页面  否者respond不生效-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--条件注释-->
+    <!--[if lt IE 9]>
+    <script src = "../lib/html5shiv/html5shiv.min.js"></script>
+    <script src = "../lib/respond/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .product{
+            width: 100%;
+            height: 500px;
+            margin: 20px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #ccc;
+        }
+        .product .nav-tabs{
+
+        }
+    </style>
+
+</head>
+<body>
+<div class="product">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">特别推荐</a></li>
+        <li role="presentation"><a href="#product_01"  role="tab" data-toggle="tab">微投资</a></li>
+        <li role="presentation"><a href="#product_02" role="tab" data-toggle="tab">微投资</a></li>
+        <li role="presentation"><a href="#product_03" role="tab" data-toggle="tab">微投资</a></li>
+        <li role="presentation"><a href="#product_04" role="tab" data-toggle="tab">微投资</a></li>
+        <li role="presentation"><a href="#product_05" role="tab" data-toggle="tab">微投资</a></li>
+        <li role="presentation"><a href="#product_06" role="tab" data-toggle="tab">微投资</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">1</div>
+        <div role="tabpanel" class="tab-pane" id="product_01">2</div>
+        <div role="tabpanel" class="tab-pane" id="product_02">3</div>
+        <div role="tabpanel" class="tab-pane" id="product_03">4</div>
+        <div role="tabpanel" class="tab-pane" id="product_04">5</div>
+        <div role="tabpanel" class="tab-pane" id="product_05">6</div>
+        <div role="tabpanel" class="tab-pane" id="product_06">7</div>
+    </div>
+
+</div>
+
+<!--引入jquery  因为bootstrap是依赖-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src = "../js/jquery-1.12.4.js"></script>
+<!-- bootstrap 核心js文件-->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src = "../lib/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
